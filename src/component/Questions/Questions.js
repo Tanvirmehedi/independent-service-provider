@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import homeSnd from "../../image/Home_second.png";
 const Questions = () => {
   return (
-    <div className="md:flex container mx-auto my-20">
+    <div className="md:flex container mx-auto my-20 bg-slate-100 p-5 md:p-20">
       <div className="px-5 mt-10 text-left ">
         <h2 className="text-3xl font-semibold">
           But first, let's ask some tough
           <br />
           questions.
         </h2>
-        <p className="pt-3 md:w-1/2 text-slate-500">
+        <p className="pt-3  text-slate-500">
           Is your website a little underwhelming? Do you believe in the power of
           content marketing, but are you short on writing resources? Are you
           struggling to get leads online? If you answered yes to any of these
