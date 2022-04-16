@@ -16,7 +16,7 @@ const Services = () => {
     <div>
       <h1 className="text-3xl uppercase">Our services</h1>
 
-      <div className="grid grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-5 m-3">
         {data.map((service, index) => (
           <DisplayServices key={index} service={service}></DisplayServices>
         ))}
