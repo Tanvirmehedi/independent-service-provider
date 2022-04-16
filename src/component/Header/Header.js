@@ -16,7 +16,7 @@ const Header = () => {
             </Link>
           </div>
           <div
-            className={`md:flex md:relative ${
+            className={`md:flex md:top-0 md:relative ${
               !open ? "hidden" : "absolute top-14 bg-orange-100 w-full py-5"
             }`}
           >
