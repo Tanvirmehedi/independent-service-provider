@@ -24,6 +24,13 @@ const Header = () => {
             <CustomLink to="/service">Service</CustomLink>
             <CustomLink to="/blog">Blog</CustomLink>
             <CustomLink to="/about">About</CustomLink>
+            <Link
+              to="/checkout"
+              className="text-orange-50 font-bold border bg-orange-400 rounded-md py-1 px-2 md:flex items-center justify-center inline-block"
+            >
+              CheckOut
+            </Link>
+            <CustomLink to="/logout">LogIn </CustomLink>
           </div>
 
           <div
