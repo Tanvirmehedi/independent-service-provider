@@ -9,7 +9,7 @@ const Banner = () => {
         <h4 className="text-lg text-orange-400">
           CONTENT STRATEGY + COPYWRITING
         </h4>
-        <h1 className="md:-mt-5 text-5xl font-bold text-slate-3000">
+        <h1 className="md:-mt-5 text-5xl font-bold text-slate-3000 uppercase">
           Write WITH
           <br />
           DIRECTION
