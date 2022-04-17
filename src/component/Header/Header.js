@@ -7,7 +7,7 @@ import "./Header.css";
 const Header = () => {
   const [open, setOpen] = useState(false);
   return (
-    <header>
+    <header className="sticky top-0 z-40 bg-orange-100 mb-10">
       <nav className="container mx-auto">
         <div className=" flex justify-between items-center">
           <div className="logo w-[20%] md:w-[10%]">
