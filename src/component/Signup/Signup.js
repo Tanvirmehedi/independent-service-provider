@@ -12,15 +12,11 @@ const Signup = () => {
   const [signInWithGoogle] = useSignInWithGoogle(auth);
 
   const [createUserWithEmailAndPassword, user] =
-    useCreateUserWithEmailAndPassword(auth);
+    useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const [updateProfile] = useUpdateProfile(auth);
 
   const navigate = useNavigate();
-
-  if (user) {
-    console.log(user);
-  }
 
   const handelGoogleSignIn = () => {
     signInWithGoogle().then(() => {

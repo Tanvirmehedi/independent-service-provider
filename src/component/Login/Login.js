@@ -7,8 +7,19 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
 const Login = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
-  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, user, , ,] = useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword, , , error] =
+    useSignInWithEmailAndPassword(auth);
+
+  let errorElement;
+
+  if (error) {
+    errorElement = (
+      <p className="text-red-500 my-3">Error : {error?.message}</p>
+    );
+  }
+
   let navigate = useNavigate();
   let location = useLocation();
 
@@ -26,9 +37,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInWithEmailAndPassword(email, password).then(() => {
-      navigate("/");
-    });
+    signInWithEmailAndPassword(email, password);
   };
   return (
     <div className="px-2">
@@ -63,6 +72,7 @@ const Login = () => {
               Login
             </button>
           </form>
+          {errorElement}
         </div>
         <div className="flex justify-center items-center my-3">
           <div className="h-[1px] w-1/2 bg-orange-200"></div>
