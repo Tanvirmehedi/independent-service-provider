@@ -1,3 +1,7 @@
-# Getting Started with Create React App
+# Getting Started with Write Way
 
-Write Way [Firebase Link](https://write-way-f1e10.web.app).
+Write Way [Hosting Link](https://write-way-f1e10.web.app).
+
+- Fully Responsive
+
+- Firebase Authentication
