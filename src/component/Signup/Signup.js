@@ -1,22 +1,44 @@
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
 
 const Signup = () => {
-  const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithGoogle] = useSignInWithGoogle(auth);
+
+  const [createUserWithEmailAndPassword, user] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const [updateProfile] = useUpdateProfile(auth);
+
   const navigate = useNavigate();
+
+  if (user) {
+    console.log(user);
+  }
+
   const handelGoogleSignIn = () => {
     signInWithGoogle().then(() => {
       navigate("/");
     });
   };
 
-  const handelSubmit = (e) => {
+  const handelSubmit = async (e) => {
     e.preventDefault();
-    console.log("hola");
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    navigate("/");
+    alert("Updated profile");
   };
+
   return (
     <div className="px-2">
       <div className=" md:w-1/3 mx-auto border px-10 py-4 rounded-lg">
@@ -41,6 +63,7 @@ const Signup = () => {
                 name="email"
                 id="email"
                 placeholder="Enter Your Email"
+                required
               />
             </div>
             <div>
@@ -50,6 +73,7 @@ const Signup = () => {
                 name="password"
                 id="password"
                 placeholder="Enter Your password "
+                required
               />
             </div>
             <button

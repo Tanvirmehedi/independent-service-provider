@@ -1,10 +1,14 @@
 import React from "react";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
 const Login = () => {
   const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
+  const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
   let navigate = useNavigate();
   let location = useLocation();
 
@@ -20,7 +24,11 @@ const Login = () => {
 
   const handelSubmit = (e) => {
     e.preventDefault();
-    console.log("hola");
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    signInWithEmailAndPassword(email, password).then(() => {
+      navigate("/");
+    });
   };
   return (
     <div className="px-2">
