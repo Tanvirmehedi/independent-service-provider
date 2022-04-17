@@ -1,11 +1,19 @@
 import { MenuIcon, XIcon } from "@heroicons/react/solid";
+import { signOut } from "firebase/auth";
 import React, { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { Link } from "react-router-dom";
+import auth from "../../firebase.init";
 import logo from "../../image/logo.png";
 import CustomLink from "../CustomLink/CustomLink";
 import "./Header.css";
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [user, loading, error] = useAuthState(auth);
+
+  const logout = () => {
+    signOut(auth);
+  };
   return (
     <header className="sticky top-0 z-40 bg-orange-100 mb-10">
       <nav className="container mx-auto">
@@ -30,7 +38,14 @@ const Header = () => {
             >
               CheckOut
             </Link>
-            <CustomLink to="/logout">LogIn </CustomLink>
+
+            {!user ? (
+              <CustomLink to="/login">LogIn </CustomLink>
+            ) : (
+              <button className="ml-2" onClick={logout}>
+                Logout{" "}
+              </button>
+            )}
           </div>
 
           <div
