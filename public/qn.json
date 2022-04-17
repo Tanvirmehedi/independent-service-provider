@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "question": "Difference between authorization and authentication?",
+    "answer": "Simply put, authentication is the process of verifying who, and where authorization is, helps or allows the user to verify which specific application, file and data they have access to."
+  },
+  {
+    "id": 2,
+    "question": "Why are you using firebase? What other options do you have to implement authentication?",
+    "answer": "I use firebase for authentication services. Alternative authentication services are Auth0, Passport, MongoDB, Okta etc"
+  },
+  {
+    "id": 3,
+    "question": "What other services does firebase provide other than authentication?",
+    "answer": "In addition to authentication, the following options are provided to us by Firebase.Cloud Firestore.Cloud Functions.Authentication.Hosting.CloudStorage.Cloud Messaging."
+  }
+]

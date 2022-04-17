@@ -1,6 +1,6 @@
 import React from "react";
 import contact from "../../image/contact.png";
-import "./Checkkout.css";
+import "./Checkout.css";
 const Checkout = () => {
   return (
     <div className="m-5">
@@ -20,14 +20,26 @@ const Checkout = () => {
         </div>
         <div className="md:w-1/2 mx-auto">
           <div className="form-group">
-            <input type="text" name="" id="" placeholder="First Name" />
-            <input type="text" name="" id="" placeholder="Last Name" />
+            <input
+              className="mb-4 pl-1"
+              type="text"
+              name=""
+              id=""
+              placeholder="First Name"
+            />
+            <input
+              type="text"
+              className="pl-1"
+              name=""
+              id=""
+              placeholder="Last Name"
+            />
           </div>
           <div className="form-group">
             <input
               type="email"
               name=""
-              className="w-full"
+              className="w-full pl-1"
               id=""
               placeholder="Email"
             />
@@ -38,7 +50,7 @@ const Checkout = () => {
               id=""
               cols="30"
               rows="4"
-              className="w-full border-2"
+              className="pl-1 w-full border-2"
               placeholder="Type Your Message"
             ></textarea>
           </div>
