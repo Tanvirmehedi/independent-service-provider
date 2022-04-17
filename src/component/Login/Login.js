@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import {
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
@@ -7,10 +8,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
 const Login = () => {
+  const [email, setEmail] = useState("");
+
   const [signInWithGoogle, user, , ,] = useSignInWithGoogle(auth);
 
   const [signInWithEmailAndPassword, , , error] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
 
   let errorElement;
 
@@ -37,7 +42,14 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInWithEmailAndPassword(email, password);
+    signInWithEmailAndPassword(email, password).then(() => {
+      navigate("/");
+    });
+  };
+
+  const resetPassword = async () => {
+    await sendPasswordResetEmail(email);
+    alert("Sent email");
   };
   return (
     <div className="px-2">
@@ -49,6 +61,7 @@ const Login = () => {
           <form onSubmit={handelSubmit}>
             <div>
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 className="border rounded my-4 px-[5px] text-lg w-full"
                 type="email"
                 name="email"
@@ -80,10 +93,16 @@ const Login = () => {
           <div className="h-[1px] w-1/2 bg-orange-200"></div>
         </div>
         <div>
-          creating an account?{" "}
+          creating an account?
           <Link className="text-orange-400 px-1" to="/signup">
             Signup
           </Link>
+        </div>
+        <div>
+          Forget Password?
+          <button className="text-orange-400 px-1 my-3" onClick={resetPassword}>
+            Reset Password
+          </button>
         </div>
 
         <div className="my-6">
