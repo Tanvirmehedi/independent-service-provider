@@ -1,9 +1,9 @@
 import React from "react";
-
+import notFound from "../../image/error-404.png";
 const Notfound = () => {
   return (
-    <div>
-      <h1>404 Not Found</h1>
+    <div className="max-h-screen">
+      <img src={notFound} className="mx-auto " alt="Not Found" />
     </div>
   );
 };
