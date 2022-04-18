@@ -9,6 +9,7 @@ import Home from "./component/Home/Home";
 import Login from "./component/Login/Login";
 import Notfound from "./component/Notfound/Notfound";
 import RequireAuth from "./component/RequireAuth/RequireAuth";
+import Service from "./component/Service/Service";
 import Signup from "./component/Signup/Signup";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/service" element={<Service />}></Route>
         <Route path="/blog" element={<Blog />}></Route>{" "}
         <Route path="/about" element={<About />}></Route>
         <Route
