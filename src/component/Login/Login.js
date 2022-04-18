@@ -45,9 +45,7 @@ const Login = () => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    signInWithEmailAndPassword(email, password).then(() => {
-      navigate("/");
-    });
+    signInWithEmailAndPassword(email, password);
   };
 
   const resetPassword = async () => {
