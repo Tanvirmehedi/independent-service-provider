@@ -5,8 +5,11 @@ import {
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { Link, useLocation, useNavigate } from "react-router-dom";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import auth from "../../firebase.init";
 import google from "../../image/google.png";
+
 const Login = () => {
   const [email, setEmail] = useState("");
 
@@ -49,10 +52,11 @@ const Login = () => {
 
   const resetPassword = async () => {
     await sendPasswordResetEmail(email);
-    alert("Sent email");
+    toast("Sent email");
   };
   return (
     <div className="px-2">
+      <ToastContainer />
       <div className=" md:w-1/3 mx-auto border px-10 py-4 rounded-lg">
         <h1 className="uppercase text-xl text-orange-300 font-extrabold">
           login
