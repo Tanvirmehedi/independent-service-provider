@@ -13,9 +13,9 @@ import google from "../../image/google.png";
 const Login = () => {
   const [email, setEmail] = useState("");
 
-  const [signInWithGoogle, user, , ,] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser, , ,] = useSignInWithGoogle(auth);
 
-  const [signInWithEmailAndPassword, , , error] =
+  const [signInWithEmailAndPassword, user, , error] =
     useSignInWithEmailAndPassword(auth);
 
   const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
@@ -33,7 +33,7 @@ const Login = () => {
 
   let from = location.state?.from?.pathname || "/";
 
-  if (user) {
+  if (user || googleUser) {
     navigate(from, { replace: true });
   }
 
@@ -49,8 +49,12 @@ const Login = () => {
   };
 
   const resetPassword = async () => {
-    await sendPasswordResetEmail(email);
-    toast("Sent email");
+    if (email) {
+      await sendPasswordResetEmail(email);
+      toast("Sent email");
+    } else {
+      toast("please enter your email address");
+    }
   };
   return (
     <div className="px-2">
