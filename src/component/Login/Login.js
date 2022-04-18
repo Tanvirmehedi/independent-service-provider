@@ -73,6 +73,7 @@ const Login = () => {
                 name="email"
                 id="email"
                 placeholder="Enter Your Email"
+                required
               />
             </div>
             <div>
@@ -82,6 +83,7 @@ const Login = () => {
                 name="password"
                 id="password"
                 placeholder="Enter Your password "
+                required
               />
             </div>
             <button

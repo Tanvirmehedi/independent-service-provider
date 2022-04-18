@@ -9,7 +9,7 @@ import auth from "../../firebase.init";
 import google from "../../image/google.png";
 
 const Signup = () => {
-  const [signInWithGoogle] = useSignInWithGoogle(auth);
+  const [signInWithGoogle, googleUser] = useSignInWithGoogle(auth);
 
   const [createUserWithEmailAndPassword, user] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
@@ -18,10 +18,12 @@ const Signup = () => {
 
   const navigate = useNavigate();
 
+  if (user || googleUser) {
+    navigate("/");
+  }
+
   const handelGoogleSignIn = () => {
-    signInWithGoogle().then(() => {
-      navigate("/");
-    });
+    signInWithGoogle();
   };
 
   const handelSubmit = async (e) => {

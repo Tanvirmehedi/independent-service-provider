@@ -1,9 +1,15 @@
 import React from "react";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import contact from "../../image/contact.png";
 import "./Checkout.css";
 const Checkout = () => {
+  const handelSubmit = () => {
+    toast("Thank You For Your Booking.");
+  };
   return (
     <div className="m-5">
+      <ToastContainer />
       <div className="container mx-auto">
         <div className="md:flex justify-around items-center">
           <div>
@@ -54,7 +60,10 @@ const Checkout = () => {
               placeholder="Type Your Message"
             ></textarea>
           </div>
-          <button className="w-full bg-orange-400 rounded-md text-lg font-semibold text-slate-50 py-2">
+          <button
+            onClick={handelSubmit}
+            className="w-full bg-orange-400 rounded-md text-lg font-semibold text-slate-50 py-2"
+          >
             Submit
           </button>
         </div>
